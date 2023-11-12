@@ -1,0 +1,85 @@
+<!-- Alsina/EjercicioCalculoFinal.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Ganancias</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: left;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+    <script type="text/javascript">
+        function calcularGanancias() {
+            var num1 = parseFloat(prompt("Ingrese el total de ganancias: "));
+            
+            // Calcular el 21%
+            var result1 = num1 * 0.21;
+            var result2 = num1 - result1;
+            var operacion1 = "Calcular 21% de " + num1.toFixed(2) + " €: " + result1.toFixed(2) + " €\nRestar el 21%: " + result2.toFixed(2) + " €";
+            
+            // Preguntar por el siguiente porcentaje
+            var porcentaje2 = parseFloat(prompt("Ingrese el siguiente porcentaje a aplicar: "));
+            
+            // Calcular el siguiente porcentaje
+            var result3 = result2 * (porcentaje2 / 100);
+            var result4 = result2 - result3;
+            var operacion2 = "Aplicar " + porcentaje2 + "% adicional: " + result3.toFixed(2) + " €\nRestar el porcentaje adicional: " + result4.toFixed(2) + " €";
+            
+            // Pedir otra cifra
+            var num2 = parseFloat(prompt("Ingrese el monto de efectivo recibido: "));
+            
+            // Restar num2 del resultado
+            var result5 = result4 - num2;
+            var operacion3 = "Restar el monto de efectivo: " + num2.toFixed(2) + " €\nResultado parcial: " + result5.toFixed(2) + " €";
+
+            // Pedir otra cifra
+            var num3 = parseFloat(prompt("Ingrese la propina y promociones recibida: "));
+            
+            // Sumar num3 al resultado
+            var result6 = result5 + num3;
+            var operacion4 = "Sumar propina y promociones: " + num3.toFixed(2) + " €\nResultado final: " + result6.toFixed(2) + " €";
+
+            // Mostrar solo el resultado final con el símbolo del euro
+            var resultadoFinal = "Resultado final: " + result6.toFixed(2) + " €";
+            var operacionCompleta = operacion1 + "\n\n" + operacion2 + "\n\n" + operacion3 + "\n\n" + operacion4;
+
+            alert(resultadoFinal);
+            document.getElementById('resultado').innerText = operacionCompleta;
+        }
+    </script>
+</head>
+<body>
+    <h1>Cálculo de Ganancias</h1>
+    <p>Ingrese los valores solicitados para calcular el resultado final.</p>
+    <button onclick="calcularGanancias()">Calcular Ganancias</button>
+    <div id="resultado"></div>
+</body>
+</html>
